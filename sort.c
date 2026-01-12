@@ -57,17 +57,22 @@ void sort(int *arr, int *n){
 //printing array
 int print_array(char *msg,int *arr, int *size)
 {
+  //start with open bracket
   printf("%s[",msg);
+  // print eacg element of array in horizontal
   for (int i = 0; i < *size; i++)
   {
+    //only first until n-1 element that have comma
     if (i < *size - 1)
     {
       printf("%i, ", arr[i]);
     }
+    //last element only print value, no comma included
     else
     {
       printf("%i", arr[i]);
     }
   }
+  //print closed bracket
   printf("]\n");
 }
