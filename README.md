@@ -1,1 +1,0 @@
-Just repository for learning algoritm and data structures in c
