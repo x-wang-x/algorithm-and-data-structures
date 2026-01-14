@@ -2,7 +2,6 @@
 #define SORT_H
 
 void sort(int *arr, int *n);
-void swap(int *a,int *b);
+void swap(int *a, int *b);
 
 #endif
-
