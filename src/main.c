@@ -5,58 +5,79 @@
 #include "search.h"
 
 void print_array(char *msg, int *arr, int *size);
-void choose_mode(int *mode);
-int main(void)
-{
-    int mode;
-    choose_mode(&mode);
-    int n;
-    printf("Number (n) of an array ? ");
-    // input array size
-    scanf_s("%i", &n);
+int* create_array(int n){
     // allocate memory size of an integer * n
     int *array = malloc(sizeof(unsigned int) * n);
     if (array == NULL)
     {
-        return 1;
+        return NULL;
     }
     for (int i = 0; i < n; i++)
     {
         printf("Array for index[%i] : ", i);
         scanf_s("%i", &array[i]);
     }
-    print_array("\nInputed array -> \n", array, &n);
-
-
-    switch (mode)
+    print_array("\nInputed array -> ", array, &n);
+    return array;
+}
+void l_search()
+{
+    int n;
+    printf("Number (n) of an array ? ");
+    // input array size
+    scanf_s("%i", &n);
+    // allocate memory size of an integer * n
+    int *array = create_array(n);
+    if (array == NULL)
     {
-    case 1:
-        int tofind;
-        printf("Searching for ? ");
-        scanf("%i",&tofind);
-        int find = linear_search(array,&n,tofind);
-        if (-1!=find){
-            printf("\nFound at index-%i.",find);
-        }
-        else {
-            printf("\nNot found.");
-        }
-        break;
-    case 2:
-        sort(array, &n);
-        print_array("\nSorted array -> ", array, &n);
-        break;
-    default:
+        return;
+    }
+    int tofind;
+    printf("\nSearching for ? ");
+    scanf("%i", &tofind);
+    int find = linear_search(array, &n, tofind);
+    printf("Result : ");
+    if (-1 != find)
+    {
+        printf("Found at index [%i]", find);
+    }
+    else
+    {
+        printf("Not found.");
+    }
+    free(array);
+
+}
+void q_sort(){
+    int n;
+    printf("Number (n) of an array ? ");
+    // input array size
+    scanf_s("%i", &n);
+    // allocate memory size of an integer * n
+    int *array = create_array(n);
+    if (array == NULL)
+    {
+        return;
+    }
+    sort(array, &n);
+    print_array("\nSorted array -> ", array, &n);
+    free(array);
+}
+int main(int argc, char **argv)
+{
+
+    if (argc < 2)
+    {
+        printf("Please input operation !");
         return 1;
     }
-
-    free(array);
-    return 0;
-}
-void choose_mode(int *mode)
-{
-    printf("===============\n1.Search\n2.Sort\n===============\nWhat to do ? ");
-    scanf("%i", mode);
+    if (strcmp(argv[1], "search") == 0)
+    {
+        l_search();
+    }
+    if (strcmp(argv[1], "sort") == 0){
+        q_sort();
+    }
 }
 // printing array
 void print_array(char *msg, int *arr, int *size)
