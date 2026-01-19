@@ -17,12 +17,11 @@ linkedlist* create(int id, char name[64]){
     return newlink;
 }
 void add(linkedlist **head,int id, char name[64]){
-    // printf("%p", head);
     linkedlist *newlink = create(id, name);
     if (newlink == NULL) return;
     newlink->next = *head;
     *head = newlink;
-    printf("Adding id=%d name=%s point=%p\n",newlink->id,newlink->name,newlink->next);
+    printf("Adding id->%d name->%s next_pointer->%p\n",newlink->id,newlink->name,newlink->next);
 
 }
 void print_list(linkedlist *head){
