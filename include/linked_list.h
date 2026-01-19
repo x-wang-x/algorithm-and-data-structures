@@ -1,6 +1,8 @@
 #ifndef LINKED_L
 #define LINKED_L
 
+
+//create struct that have id and name size of 64, and pointer to next struct
 typedef struct linkedlist
 {
     int id;
