@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include "sort.h"
 #include "search.h"
+#include "linked_list.h"
 
 void print_array(char *msg, int *arr, int *size);
 int* create_array(int n){
@@ -63,6 +64,7 @@ void q_sort(){
     print_array("\nSorted array -> ", array, &n);
     free(array);
 }
+void l_l();
 int main(int argc, char **argv)
 {
 
@@ -75,9 +77,25 @@ int main(int argc, char **argv)
     {
         l_search();
     }
-    if (strcmp(argv[1], "sort") == 0){
+    else if (strcmp(argv[1], "sort") == 0){
         q_sort();
     }
+    else if (strcmp(argv[1], "linkedlist") == 0){
+        l_l();
+    }
+    else{
+        printf("Incorrect operation !");
+        return 1;
+    }
+}
+void l_l(){
+    linkedlist *head = NULL;
+    char name[64] = "John";
+    add(&head, 1, name);
+    strcpy(name,"Doe");
+    add(&head, 2,name);
+
+    print_list(head);
 }
 // printing array
 void print_array(char *msg, int *arr, int *size)
