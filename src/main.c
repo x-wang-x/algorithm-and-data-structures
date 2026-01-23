@@ -6,7 +6,8 @@
 #include "linked_list.h"
 
 void print_array(char *msg, int *arr, int *size);
-int* create_array(int n){
+int *create_array(int n)
+{
     // allocate memory size of an integer * n
     int *array = malloc(sizeof(unsigned int) * n);
     if (array == NULL)
@@ -47,9 +48,9 @@ void l_search()
         printf("Not found.");
     }
     free(array);
-
 }
-void q_sort(){
+void q_sort()
+{
     int n;
     printf("Number (n) of an array ? ");
     // input array size
@@ -77,29 +78,54 @@ int main(int argc, char **argv)
     {
         l_search();
     }
-    else if (strcmp(argv[1], "sort") == 0){
+    else if (strcmp(argv[1], "sort") == 0)
+    {
         q_sort();
     }
-    else if (strcmp(argv[1], "linkedlist") == 0){
-        l_l();
+    else if (strcmp(argv[1], "linkedlist") == 0)
+    {
+        NodeList list;
+        // initialize and create head node
+        list.head = NULL;
+        // make head also a tail, because it's only one node anyway
+        list.tail = list.head;
+        l_l(&list);
     }
-    else{
+    else
+    {
         printf("Incorrect operation !");
         return 1;
     }
 }
-void l_l(){
-    // int input;
-    // scanf_s("%i",&input);
-    // if(input==1){
-    //     return;
-    // }
-    Node *tail = create(2);
-    Node *head = tail;
-    addNode(&tail, 1);
-    printNode("All List : \n",head,"================\n");
-    reverse(&head);
-    printNode("Reversed : \n",head,"================\n");
+void l_l(NodeList *list)
+{
+
+    int options;
+    printNode("================\nAll List : ->\n", list->head, "================\n");
+    printf("1. Add to first of list\n2. Add to end of the list\n4. Exit\n");
+    printf("Options ? ");
+    scanf_s("%d",&options);
+    switch (options)
+    {
+    int number;
+    case 1:
+        printf("Add number to list = ");
+        scanf_s("%d",&number);
+        addFirstNode(list, number);
+        printf("Added %d\n",number);
+        l_l(list);
+        break;
+    case 2:
+        printf("Add number to list = ");
+        scanf_s("%d",&number);
+        addLastNode(list, number);
+        printf("Added %d\n",number);
+        l_l(list);
+        break;
+    default:
+        break;
+    }
+    return;
 }
 // printing array
 void print_array(char *msg, int *arr, int *size)

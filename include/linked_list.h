@@ -8,14 +8,14 @@ typedef struct Node
     int number;
     struct Node *next;
 } Node;
-typedef struct NodeStuct {
-    struct Node *head;
-    struct Node *tail;
-} NodeStuct;
+typedef struct NodeList
+{
+    Node *head;
+    Node *tail;
+} NodeList;
 
-struct Node* create(int number);
-void reverse(Node **head);
-void addNode(Node **tail, int id);
+void addLastNode(NodeList *list, int number);
+void addFirstNode(NodeList *list, int number);
 void printNode();
 
 #endif
