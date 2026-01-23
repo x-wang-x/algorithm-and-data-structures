@@ -3,39 +3,57 @@
 #include <stdlib.h>
 #include <string.h>
 
-linkedlist* create(int id, char name[64]){
-    //allocate memory of a list (struct)
-    linkedlist *newlink = (linkedlist*)malloc(sizeof(linkedlist));
-    if (newlink == NULL) {
+
+Node* create(int number){
+    Node *node = (Node*)malloc(sizeof(Node));
+    if (node == NULL){
         printf("Memory allocation failed. \n");
         return NULL;
     }
-    // copy memory buffer of a name ( because is an array , cannot be assigned directly)
-    memcpy(newlink->name,name,64*sizeof(char));
-    newlink->id = id;
-    newlink->next = NULL;
+    node->prev = NULL;
+    node->next = NULL;
+    node->number = number;
 
-    return newlink;
+    return node;
 }
-void add(linkedlist **head,int id, char name[64]){
-    linkedlist *newlink = create(id, name);
-    if (newlink == NULL) return;
-    //set the head of linkedlist to new created list
-    //for example if the current head is NULL , it's gonna set this function to add new list and set it as head
-    //and put NULL to current next
-    //but if current head  it's a valid head, it's set 'next' of a new inputed list to current head (the head when function called)
-    //so basically the current head is always the new created list and point down until the NULL pointer
-    newlink->next = *head;
-    *head = newlink;
-    printf("Adding id->%d name->%s next_pointer->%p\n",newlink->id,newlink->name,newlink->next);
+void addNode(Node **tail, int number){
+    Node *newNode = create(number);
+    printf("Creating %d to %p\n",number,newNode);
 
-}
-void print_list(linkedlist *head){
-    linkedlist *temp = head;
-    while (temp !=NULL)
-    {
-        printf("-> %d, %s <-\n",temp->id,temp->name);
-        //set current list to next one
-        temp= temp->next;
+    if (newNode==NULL) return;
+    if ((*tail)!=NULL){
+        newNode->prev = *tail;
+        (*tail)->next = newNode;
+        newNode->number = number;
     }
+    *tail = newNode;
+    printf("prev -> %p | value-> %d | next-> %p\n",(*tail)->prev,(*tail)->number,(*tail)->next);
+}
+void reverse(Node **head)
+{
+    Node *prev = NULL;
+    Node *next = NULL;
+    Node *curr = *head;
+
+    while (curr != NULL)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    *head = prev;
+}
+void printNode(char *pre,Node *head,char *post)
+{
+    printf("%s",pre);
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        printf("-> %d <-\n", temp->number);
+        // set current list to next one
+        temp = temp->next;
+    }
+    printf("%s",post);
+
 }

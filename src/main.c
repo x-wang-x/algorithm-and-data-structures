@@ -89,13 +89,17 @@ int main(int argc, char **argv)
     }
 }
 void l_l(){
-    linkedlist *head = NULL;
-    char name[64] = "John";
-    add(&head, 1, name);
-    strcpy(name,"Doe");
-    add(&head, 2,name);
-
-    print_list(head);
+    // int input;
+    // scanf_s("%i",&input);
+    // if(input==1){
+    //     return;
+    // }
+    Node *tail = create(2);
+    Node *head = tail;
+    addNode(&tail, 1);
+    printNode("All List : \n",head,"================\n");
+    reverse(&head);
+    printNode("Reversed : \n",head,"================\n");
 }
 // printing array
 void print_array(char *msg, int *arr, int *size)
