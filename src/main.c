@@ -4,6 +4,7 @@
 #include "sort.h"
 #include "search.h"
 #include "linked_list.h"
+#include "queue.h"
 
 void print_array(char *msg, int *arr, int *size);
 int *create_array(int n)
@@ -90,6 +91,22 @@ int main(int argc, char **argv)
         // make head also a tail, because it's only one node anyway
         list.tail = list.head;
         l_l(&list);
+    }
+    else if (strcmp(argv[1], "queue") == 0){
+        //this test queue will queue of a 5 element
+        for (size_t i = 0; i < 5; i++)
+        {
+            enqueue(i);
+            displayQueue();
+            sleep(1);
+        }
+        //this will dequeue of all set elements, added extra iteration dequeue so it show error empty queue
+        for (size_t i = 0; i < 6; i++)
+        {
+            dequeue();
+            displayQueue();
+            sleep(1);
+        }
     }
     else
     {
