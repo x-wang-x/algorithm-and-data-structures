@@ -1,5 +1,5 @@
 <h1>Data structure and algorithm in C</h1>
-<p>It's just bunch of sorting and searching algorithm for my learning purpose</p>
+<p>It's just bunch of sorting & searching algorithm , also data structures for my learning purposes</p>
 <p>Might useful ? idk .</p>
 
 <h3>Requirement : </h3>
@@ -12,8 +12,8 @@
 <h3>How to compile :</h3>
 <ol>
   <li>Clone the repo</li>
-  <li>Open terminal on cloned dir</li>
-  <li>Run :</li><code>make all</code>
+  <li>Open cloned dir</li>
+  <li>On terminal run : </li><code>make all</code>
 </ol>
 
 <h3>How to use : </h3>
@@ -24,5 +24,6 @@
     <li><code>sort</code></li>
     <li><code>search</code></li>
     <li><code>linkedlist</code></li>
+    <li><code>queue</code></li>
 </ol>
 
