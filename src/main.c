@@ -5,6 +5,7 @@
 #include "search.h"
 #include "linked_list.h"
 #include "queue.h"
+#include "recursion.h"
 
 void print_array(char *msg, int *arr, int *size);
 int *create_array(int n)
@@ -82,6 +83,20 @@ int main(int argc, char **argv)
     else if (strcmp(argv[1], "sort") == 0)
     {
         q_sort();
+    }
+    else if (strcmp(argv[1], "recursion") == 0)
+    {
+        int n;
+        printf("Number (n) of an array ? ");
+        // input array size
+        scanf_s("%i", &n);
+        // allocate memory size of an integer * n
+        int *array = create_array(n);
+        if (array == NULL)
+        {
+            return 0;
+        }
+        printf("Sum of arrays = %d",sumArray(array,n));
     }
     else if (strcmp(argv[1], "linkedlist") == 0)
     {
