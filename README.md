@@ -1,6 +1,10 @@
 <h1>Data structure and algorithm in C</h1>
 <p>It's just bunch of sorting & searching algorithm , also data structures for my learning purposes</p>
+
+<b>The important things of this project is not the result, but the basecode it self.</b>
+<small>That's why i took sometime to write comments as much as i can, so i can revisit and understand what was happening<small>
 <p>Might useful ? idk .</p>
+
 
 <h3>Requirement : </h3>
 <ol>
@@ -25,5 +29,6 @@
     <li><code>search</code></li>
     <li><code>linkedlist</code></li>
     <li><code>queue</code></li>
+    <li><code>recursion</code></li>
 </ol>
 
