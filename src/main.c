@@ -51,21 +51,31 @@ void l_search()
     }
     free(array);
 }
-void q_sort()
+void sort(int* arr, int *n)
 {
-    int n;
-    printf("Number (n) of an array ? ");
-    // input array size
-    scanf_s("%i", &n);
-    // allocate memory size of an integer * n
-    int *array = create_array(n);
-    if (array == NULL)
+    int opt;
+    printf("Mode :\n1. Selection\n2. Insertion\n99. Exit\n");
+    printf("Choice ? ");
+    scanf_s("%i", &opt);
+    print_array("\nInputed array -> ", arr, n);
+    switch (opt)
     {
+    case 1:
+        selection(arr, n);
+        print_array("Sorted array -> ", arr, n);
+        break;
+    case 2:
+        insertion(arr, n);
+        print_array("Sorted array -> ", arr, n);
+        break;
+    case 99:
         return;
+    default:
+        printf("Invalid choice.\n");
+        break;
     }
-    sort(array, &n);
-    print_array("\nSorted array -> ", array, &n);
-    free(array);
+    sleep(1);
+    sort(arr,n);
 }
 void l_l();
 int main(int argc, char **argv)
@@ -82,7 +92,19 @@ int main(int argc, char **argv)
     }
     else if (strcmp(argv[1], "sort") == 0)
     {
-        q_sort();
+        int n;
+        printf("Number (n) of an array ? ");
+        // input array size
+        scanf_s("%i", &n);
+        // allocate memory size of an integer * n
+        int *array = create_array(n);
+        if (array == NULL)
+        {
+            return 0;
+        }
+        sort(array,&n);
+        free(array);
+
     }
     else if (strcmp(argv[1], "recursion") == 0)
     {
